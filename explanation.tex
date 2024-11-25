@@ -1,0 +1,97 @@
+\documentclass[a4paper,12pt]{ltjarticle}
+\usepackage{amsmath, ascmac,amssymb}
+\usepackage{enumitem}       % 問題番号のカスタマイズ
+
+\title{現代数理統計学の基礎　確認テスト　発展編　解説}
+\date{\empty}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}[label=\textbf{問\arabic*}]
+\item 解説
+\begin{enumerate}[label=(\arabic*)]
+\item 確率関数の条件より、
+\begin{align} 
+  \int_{-\infty}^{\infty} f_{X}(x) dx &= \int_{-1}^{1} C(1-|x|) dx \notag\\
+  &= 2\int_{0}^{1} C(1-x)\hspace{3mm}(\because 偶関数) \notag\\
+  &= 2C\left[x-\frac{x^2}{2}\right]_{0}^{1} \notag\\
+  &= C = 1
+\end{align}
+より $C=1$ である。また、分布関数 $F_X(x)$ は $f_X(x)$ の範囲に注意すると、
+\begin{itemize}
+  \item $x \leq -1$ のとき
+    $F_X(x) = 0$
+  \item $-1 < x \leq 0$ のとき
+  \begin{align}
+    F_X(x) 
+    &= \int_{-\infty}^{x} f_{X}(t) dt \notag \\
+    &= \int_{-1}^{x} (1-|t|) dt \notag\\
+    &= \int_{-1}^{x} (1+t) dt \notag\\
+    &= \left[t+\frac{t^2}{2}\right]_{-1}^{x} \notag\\
+    &= x + \frac{x^2}{2} + \frac{1}{2}
+  \end{align}
+  \item $0 < x < 1$ のとき
+  \begin{align}
+    F_X(x) 
+    &= \int_{-\infty}^{x} f_{X}(t) dt \notag\\
+    &= \int_{-1}^{x} (1-|t|) dt \notag\\
+    &= \int_{-1}^{0} (1+t) dt + \int_{0}^{x} (1-t) dt \notag\\
+    &= \left[t+\frac{t^2}{2}\right]_{-1}^{0} + \left[t-\frac{t^2}{2}\right]_{0}^{x} \notag\\
+    &= \frac{1}{2} + x - \frac{x^2}{2}
+  \end{align}
+  \item $x \geq 1$ のとき
+   $F_X(x) = 1$
+\end{itemize}
+\item $Y=|X|$ とおくと、$Y$ の分布関数 $F_Y(y)$ は、
+\begin{align}
+  F_Y(y) 
+  &= P(Y \leq y) = P(|X| \leq y) \notag\\
+  &= P(-y \leq X \leq y) \notag\\
+  &= F_X(y) - F_X(-y) \notag
+\end{align}
+ここで、$Y=|X|$ であることから、$y \geq 0$ に注意して、(1) から
+\begin{itemize}
+  \item $0 \leq y < 1$ のとき
+  \begin{align}
+    F_Y(y) 
+    &= F_X(y) - F_X(-y) \notag\\
+    &= \int_{-y}^{y} (1 - |t|) dt \notag \\
+    &= 2\int_{0}^{y} (1-t) dt \notag \\
+    &= 2\left[t-\frac{t^2}{2}\right]_{0}^{y} \notag \\
+    &= 2y - y^2
+  \end{align}
+  \item $y \geq 1$ のとき $F_Y(y) = 1$
+\end{itemize}
+これらを $y$ で微分することで $Y$ の確率密度関数 $f_Y(y)$ を求めることができ、
+\begin{equation}
+  f_Y(y) = \left\{
+  \begin{aligned}
+    &2(1-y)\hspace{3mm} & (0 \leq y < 1) \\
+    &0\hspace{3mm} & (otherwise)
+  \end{aligned}
+  \right.
+\end{equation}
+\item $Z=X^2$ とおくと、$Z$ の分布関数 $F_Z(z)$ は、
+\begin{align}
+  F_Z(z) 
+  &= P(Z \leq z) \notag\\
+  &= P(X^2 \leq z) \notag\\
+  &= P(-\sqrt{z} \leq X \leq \sqrt{z}) \notag\\ 
+  &= \int_{\sqrt{z}}^{\sqrt{z}} f_X(x) dx \hspace{3mm}(z \geq 0)
+\end{align}
+であることから、(2) と同様に $z$ の範囲で場合分けすることで
+\begin{itemize}
+  \item $0 \leq z < 1$ のとき
+    \begin{align}
+      F_Z{z}
+      &= \int_{-\sqrt{z}}^{\sqrt{z}} f_X(x) dx \notag\\
+      &= \int_{-\sqrt{z}}^{0} (1+|x|) dx + \int_{0}^{\sqrt{z}} (1-|x|) dx \notag\\
+      &= 2\int_{0}^{\sqrt{z}} (1+x) dx \notag
+    \end{align}
+  \item $z \geq 1$ のとき、$F_Z(z) = 1$
+\end{itemize}
+これらを $z$ で微分することで $Z$ の確率密度関数 $f_Z(z)$ を求めることができる。
+\end{enumerate}
+\end{enumerate}
+\end{document}
