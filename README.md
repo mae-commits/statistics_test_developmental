@@ -1,1 +1,2 @@
-# statistics_test_developmental
+# Definitions
+ This is the answer and extra explanations for the developmental test of "現代数理統計学の基礎". Though the author has already writen the answer of it, the descriptions are a litttle bit difficult for many students (that is the only my opinion). Sourses of the tests are in following urls (https://sites.google.com/site/ktatsuya77/xian-dai).
